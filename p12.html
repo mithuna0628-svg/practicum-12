@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizHive - Business Management</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f2f2f0;
+    color: #1a2a3a;
+}
+
+/* HEADER - BIZHIVE BUSINESS */
+header {
+    background: #1a2a3a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 5px solid #f2b705;
+}
+
+header h1 {
+    font-size: 38px;
+    letter-spacing: 1px;
+}
+
+header h1 span {
+    color: #f2b705;
+}
+
+header p {
+    margin-top: 8px;
+    color: #d9dee3;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+nav {
+    background: #f2b705;
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    color: #1a2a3a;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+/* ARCHITECTURE DIAGRAM */
+.architecture {
+    background: white;
+    border: 1px solid #d9d9d9;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-top: 5px solid #1a2a3a;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.architecture h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a2a3a;
+}
+
+.client {
+    background: #fff7d6;
+    border: 1px solid #f2b705;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.devices {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+}
+
+.device {
+    background: white;
+    padding: 12px 22px;
+    border: 1px solid #1a2a3a;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.project {
+    background: #f0f2f3;
+    padding: 15px;
+}
+
+.project h3 {
+    margin-bottom: 12px;
+}
+
+.application {
+    background: #d5e6ff;
+    border: 1px solid #6c9ce0;
+    padding: 20px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.service-group {
+    background: #ffe69a;
+    border: 1px solid #d5a500;
+    padding: 12px;
+}
+
+.service {
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: center;
+    color: #1a2a3a;
+    font-weight: bold;
+}
+
+.arrow {
+    text-align: center;
+    font-size: 22px;
+    color: #1a2a3a;
+    padding: 5px;
+}
+
+/* BIZHIVE FORM */
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border-top: 5px solid #f2b705;
+    box-shadow: 0 3px 12px #00000015;
+}
+
+.card h2 {
+    color: #1a2a3a;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #555;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    font-weight: bold;
+    color: #1a2a3a;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #f2b705;
+    border-color: #f2b705;
+}
+
+button {
+    background: #1a2a3a;
+    color: #f2b705;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 18px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #f2b705;
+    color: #1a2a3a;
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#result {
+    background: #fff7d6;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #f2b705;
+}
+
+#apiData {
+    background: #f0f2f3;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    background: #1a2a3a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-top: 5px solid #f2b705;
+}
+
+@media(max-width:650px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+    nav a {
+        display: inline-block;
+        margin: 7px;
+    }
+    .container {
+        width: 95%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Biz<span>Hive</span> Business</h1>
+    <p>CONNECT • GROW • SUCCEED</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#register">Join Us</a>
+    <a href="#workouts">Services</a>
+</nav>
+
+<div class="container" id="home">
+
+<!-- BIZHIVE CLOUD ARCHITECTURE -->
+<section class="architecture" id="architecture">
+
+<h2>BizHive - Application Architecture</h2>
+
+<div class="client">
+    <h3>CLIENT</h3>
+    <div class="devices">
+        <div class="device">📱<br>Mobile Device</div>
+        <div class="device">💻<br>Desktop Device</div>
+    </div>
+</div>
+
+<div class="project">
+
+<h3>BizHive Cloud Project</h3>
+
+<div class="application">
+
+<h3>BUSINESS APPLICATION</h3>
+
+<div class="arrow">⬇ ①</div>
+
+<div class="services">
+
+<div class="service-group">
+    <div class="service">Business CDN</div>
+    <div class="service">Load Balancing</div>
+    <div class="arrow">⬇ ②</div>
+    <div class="service">Cloud Storage</div>
+</div>
+
+<div>
+    <div class="service">Cloud Firestore</div>
+    <div class="arrow">⬇</div>
+    <div class="service">Cloud Run</div>
+    <div class="arrow">⬆ ⑤</div>
+    <div class="service">Secret Manager</div>
+</div>
+
+</div>
+
+<div class="arrow">① Client Request → Application</div>
+
+</div>
+</div>
+</section>
+
+<!-- BIZHIVE REGISTRATION -->
+<section class="card" id="register">
+
+<h2>BizHive Business Registration</h2>
+<p>Register as a BizHive business client to access our services.</p>
+
+<form id="fitnessForm" action="#" method="post">
+
+<label for="name">Full Name</label>
+<input type="text" id="name"
+placeholder="Enter your name" required minlength="3">
+
+<label for="email">Email Address</label>
+<input type="email" id="email"
+placeholder="Enter your email" required>
+
+<label for="age">Age</label>
+<input type="number" id="age"
+placeholder="Enter your age" min="16" max="80" required>
+
+<label for="weight">Weight (kg)</label>
+<input type="number" id="weight"
+placeholder="Enter your weight" min="20" max="300" required>
+
+<label for="height">Height (cm)</label>
+<input type="number" id="height"
+placeholder="Enter your height" min="100" max="250" required>
+
+<label for="workout">Business Service Type</label>
+<select id="workout" required>
+    <option value="">Select Service</option>
+    <option value="Yoga">Yoga - Wellness</option>
+    <option value="Cardio">Cardio - Health</option>
+    <option value="Strength Training">Strength Training</option>
+    <option value="Weight Training">Weight Training</option>
+</select>
+
+<button type="submit">Register Now</button>
+
+</form>
+
+<div id="message"></div>
+<div id="result"></div>
+
+</section>
+
+<!-- API DATA MANAGEMENT -->
+<section class="card" id="workouts">
+
+<h2>Business Data Management</h2>
+
+<p>Click below to retrieve business information using the Fetch API.</p>
+
+<button onclick="getWorkoutData()">Fetch Business Data</button>
+
+<div id="apiData">Business data will appear here.</div>
+
+</section>
+
+</div>
+
+<footer>
+    <p>© 2026 BizHive Business | All Rights Reserved</p>
+</footer>
+
+<script>
+
+// 1. JAVASCRIPT FUNCTION
+function calculateBMI(weight, height) {
+    let heightMeter = height / 100;
+    let bmi = weight / (heightMeter * heightMeter);
+    return bmi.toFixed(2);
+}
+
+// 2. INPUT VALIDATION
+function validateInput(name, email, age, weight, height, workout) {
+    if (name.trim().length < 3) {
+        return "Name must contain at least 3 characters.";
+    }
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        return "Please enter a valid email address.";
+    }
+    if (age < 16 || age > 80) {
+        return "Age must be between 16 and 80.";
+    }
+    if (weight < 20 || weight > 300) {
+        return "Weight must be between 20 and 300 kg.";
+    }
+    if (height < 100 || height > 250) {
+        return "Height must be between 100 and 250 cm.";
+    }
+    if (workout === "") {
+        return "Please select a business service type.";
+    }
+    return "VALID";
+}
+
+// 3. FORM SUBMISSION
+document.getElementById("fitnessForm")
+.addEventListener("submit", async function(event) {
+    event.preventDefault();
+    try {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let age = Number(document.getElementById("age").value);
+        let weight = Number(document.getElementById("weight").value);
+        let height = Number(document.getElementById("height").value);
+        let workout = document.getElementById("workout").value;
+
+        let validation = validateInput(name, email, age, weight, height, workout);
+        if (validation !== "VALID") {
+            document.getElementById("message").style.color = "red";
+            document.getElementById("message").innerText = validation;
+            return;
+        }
+
+        let bmi = calculateBMI(weight, height);
+        let fitnessData = {
+            name: name, email: email, age: age,
+            weight: weight, height: height,
+            workout: workout, bmi: bmi
+        };
+        console.log("Validated BizHive Data:", fitnessData);
+
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerText =
+            "Registration details validated successfully!";
+
+        document.getElementById("result").innerHTML =
+            "<h3>BizHive Registration Details</h3>" +
+            "<p>Name: " + fitnessData.name + "</p>" +
+            "<p>Email: " + fitnessData.email + "</p>" +
+            "<p>Age: " + fitnessData.age + "</p>" +
+            "<p>Service: " + fitnessData.workout + "</p>" +
+            "<p>BMI: " + fitnessData.bmi + "</p>";
+
+        localStorage.setItem("fitnessMember", JSON.stringify(fitnessData));
+        await sendWorkoutData(fitnessData);
+    }
+    catch(error) {
+        console.error("Registration Error:", error);
+        document.getElementById("message").innerText =
+            "An error occurred. Please try again.";
+    }
+});
+
+// 4. FETCH API - GET REQUEST
+async function getWorkoutData() {
+    let output = document.getElementById("apiData");
+    output.innerText = "Loading business data...";
+    try {
+        let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+        if (!response.ok) {
+            throw new Error("API request failed");
+        }
+        let data = await response.json();
+        console.log("API GET Response:", data);
+        output.innerHTML =
+            "<h3>Business Data Retrieved</h3>" +
+            "<p>Business ID: " + data.id + "</p>" +
+            "<p>Business Title: " + data.title + "</p>" +
+            "<p>Details: " + data.body + "</p>";
+    }
+    catch(error) {
+        console.error("Fetch Error:", error);
+        output.innerText = "Unable to retrieve data. Check your internet connection.";
+    }
+}
+
+// 5. API POST REQUEST
+async function sendWorkoutData(fitnessData) {
+    try {
+        let response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(fitnessData)
+            }
+        );
+        if (!response.ok) {
+            throw new Error("Data submission failed");
+        }
+        let data = await response.json();
+        console.log("API POST Response:", data);
+        document.getElementById("message").innerText += " Demo API submission successful!";
+    }
+    catch(error) {
+        console.error("API POST Error:", error);
+        document.getElementById("message").innerText += " API submission failed, but data is stored locally.";
+    }
+}
+
+// 6. DEBUGGING FUNCTION
+console.log("BizHive Application Loaded Successfully.");
+
+</script>
+
+</body>
+</html>
